@@ -3,12 +3,11 @@
     x:Class="IT3048_MAIU_Grocery_List.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:IT3048_MAIU_Grocery_List"
+    xmlns:pages="clr-namespace:IT3048_MAIU_Grocery_List.Pages"
     Title="IT3048_MAIU_Grocery_List">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate pages:LoginPage}"
+        Route="Login" />
 
 </Shell>
