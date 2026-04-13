@@ -1,11 +1,13 @@
-
+using IT3048_MAIU_Grocery_List.Services;
 namespace IT3048_MAIU_Grocery_List.Pages;
 
 public partial class LoginPage : ContentPage
 {
-	public LoginPage()
+	private readonly AppDatabaseService _database;
+	public LoginPage(AppDatabaseService database)
 	{
 		InitializeComponent();
+		_database = database;
 	}
 
 	private async void OnSubmitClicked(object sender, EventArgs e)
@@ -39,8 +41,15 @@ public partial class LoginPage : ContentPage
 
 
 	//This is the temporary logic to make sure the loginpage looks alright and functions. Replace with SQLite database logic.
-	private Task<bool> ValidateCredentialsAsync(string username, string password)
+	private async Task<bool> ValidateCredentialsAsync(string username, string password)
 	{
-		return Task.FromResult(username == "test" && password == "1234");
+		var user = await _database.Users.GetByUsernameAsync(username);
+
+		if (user == null)
+		{
+			return false;
+		}
+
+		return user.PasswordHash == password;
 	}
 }

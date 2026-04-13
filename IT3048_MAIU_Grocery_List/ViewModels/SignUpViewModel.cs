@@ -1,4 +1,6 @@
+using IT3048_MAIU_Grocery_List.Services;
 using System.ComponentModel;
+using IT3048_MAIU_Grocery_List.Models;
 
 namespace IT3048_MAIU_Grocery_List.ViewModels;
 
@@ -13,6 +15,7 @@ public class SignUpViewModel : INotifyPropertyChanged
 	private string _confirmPassword;
 	private string _errorMessage;
 	private bool _hasError;
+    private readonly AppDatabaseService _database;
 
 	public string Username
 	{
@@ -57,8 +60,10 @@ public class SignUpViewModel : INotifyPropertyChanged
     public Command SignUpCommand { get; }
     public Command NavigateToLoginCommand { get; }
 
-    public SignUpViewModel()
+    public SignUpViewModel(AppDatabaseService database)
     {
+        _database = database;
+
         SignUpCommand = new Command(OnSignUp);
         NavigateToLoginCommand = new Command(async () =>
         {
@@ -85,8 +90,14 @@ public class SignUpViewModel : INotifyPropertyChanged
             return;
         }
 
-        // Save to database
-        // await _database.CreateUserAsync(new User { Username = Username, Email = Email, PasswordHash = Hash(Password) });
+        var newUser = new User
+        {
+            Username = Username,
+            Email = Email,
+            PasswordHash = Password
+        };
+
+        await _database.Users.CreateUserAsync(newUser);
 
         await Shell.Current.GoToAsync("//LoginPage");
     }

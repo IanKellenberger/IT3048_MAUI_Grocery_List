@@ -1,10 +1,13 @@
+using IT3048_MAIU_Grocery_List.Services;
+using IT3048_MAIU_Grocery_List.ViewModels;
+
 namespace IT3048_MAIU_Grocery_List.Pages;
 
 public partial class SignUpPage : ContentPage
 {
-	public SignUpPage()
+	public SignUpPage(AppDatabaseService database)
 	{
 		InitializeComponent();
-		BindingContext = new ViewModels.SignUpViewModel();
+		BindingContext = new SignUpViewModel(database);
 	}
 }
