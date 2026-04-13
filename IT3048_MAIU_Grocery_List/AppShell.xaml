@@ -10,4 +10,8 @@
         ContentTemplate="{DataTemplate pages:LoginPage}"
         Route="Login" />
 
+    <ShellContent
+        ContentTemplate="{DataTemplate pages:SignUpPage}"
+        Route="SignUpPage"/>
+
 </Shell>

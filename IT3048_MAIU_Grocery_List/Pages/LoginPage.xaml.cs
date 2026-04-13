@@ -34,7 +34,7 @@ public partial class LoginPage : ContentPage
 	}
 	private async void OnSignupTapped(object sender, TappedEventArgs e)
 	{
-		await Shell.Current.GoToAsync("//SignupPage");
+		await Shell.Current.GoToAsync("//SignUpPage");
 	}
 
 
