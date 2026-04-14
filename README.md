@@ -6,11 +6,11 @@ Many people rely on paper grocery lists or basic notes apps, which are easy to l
 ## Wireframes - 
 
 
-<img src="/IT3048_MAUI_Grocery_List/Resources/Images/account.png" alt="Sign-up Page" width="450">
+<img src="/IT3048_MAUI_Grocery_List/Resources/Images/Account.png" alt="Sign-up Page" width="450">
 
-<img src="/IT3048_MAUI_Grocery_List/Resources/Images/household.png" alt="Household Page" width="450">
+<img src="/IT3048_MAUI_Grocery_List/Resources/Images/Household.png" alt="Household Page" width="450">
 
-<img src="/IT3048_MAUI_Grocery_List/Resources/Images/list.png" alt="Grocery List" width="450">
+<img src="/IT3048_MAUI_Grocery_List/Resources/Images/List.png" alt="Grocery List" width="450">
 
 
 ## Project Timeline - 
