@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace IT3048_MAIU_Grocery_List
+namespace IT3048_MAUI_Grocery_List
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

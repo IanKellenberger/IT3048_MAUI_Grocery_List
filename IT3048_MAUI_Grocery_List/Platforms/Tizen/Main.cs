@@ -2,7 +2,7 @@ using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace IT3048_MAIU_Grocery_List
+namespace IT3048_MAUI_Grocery_List
 {
     internal class Program : MauiApplication
     {

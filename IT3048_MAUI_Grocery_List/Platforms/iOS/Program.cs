@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace IT3048_MAIU_Grocery_List
+namespace IT3048_MAUI_Grocery_List
 {
     public class Program
     {

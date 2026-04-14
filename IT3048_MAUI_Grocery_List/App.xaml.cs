@@ -1,15 +1,14 @@
-﻿namespace IT3048_MAIU_Grocery_List
+
+﻿using IT3048_MAUI_Grocery_List.Pages;
+
+namespace IT3048_MAUI_Grocery_List
 {
     public partial class App : Application
     {
-        public App()
+        public App(LoginPage loginPage)
         {
             InitializeComponent();
-        }
-
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
+            MainPage = new AppShell();
         }
     }
 }

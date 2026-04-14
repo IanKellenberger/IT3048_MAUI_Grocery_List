@@ -3,7 +3,7 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace IT3048_MAIU_Grocery_List.WinUI
+namespace IT3048_MAUI_Grocery_List.WinUI
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
