@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="IT3048_MAUI_Grocery_List.AppShell"
+xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+xmlns:pages="clr-namespace:IT3048_MAUI_Grocery_List.Pages"
+Title="IT3048_MAUI_Grocery_List">
+
+    <TabBar>
+        <ShellContent Route="Login" ContentTemplate="{DataTemplate pages:LoginPage}" />
+    </TabBar>
+</Shell>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IT3048_MAUI_Grocery_List.Pages.SignUpPage"
+             Title="SignUpPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="16">
+            <Label Text="Create Account" 
+                   FontSize="28" 
+                   HorizontalOptions="Center"/>
+
+            <Entry Placeholder="Username"
+                   Text="{Binding Username}"/>
+
+            <Entry Placeholder="Email"
+                   Keyboard="Email"
+                   Text="{Binding Email}"/>
+
+            <Entry Placeholder="Password"
+                   IsPassword="True"
+                   Text="{Binding Password}"/>
+
+            <Entry Placeholder="Confirm Password"
+                   IsPassword="True"
+                   Text="{Binding ConfirmPassword}"/>
+
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="Red"
+                   IsVisible="{Binding HasError}"/>
+
+            <Button Text="Sign Up"
+                    Command="{Binding SignUpCommand}"/>
+
+            <Button Text="Back To Login"
+                    Command="{Binding NavigateToLoginCommand}"
+                    BackgroundColor="LightGrey"
+                    TextColor="Black"/>
+
+        </VerticalStackLayout>
+        
+    </ScrollView>
+    
+</ContentPage>
