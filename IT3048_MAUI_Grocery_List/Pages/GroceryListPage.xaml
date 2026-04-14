@@ -1,20 +1,70 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IT3048_MAUI_Grocery_List.Pages.GroceryListPage"
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:IT3048_MAUI_Grocery_List.ViewModels"
+    x:Class="IT3048_MAUI_Grocery_List.Pages.GroceryListPage">
 
-             Title="GroceryListPage">
-    <VerticalStackLayout>
+    <ContentPage.BindingContext>
+        <viewmodels:GroceryListViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            x:Name="UsernameLabel"
+            FontSize="18"
+            TextColor="Gray"
+            HorizontalOptions="Start" />
 
-        <Label x:Name="UsernameLabel"
-               FontSize="20"
-               HorizontalOptions="Center"
-               Margin="0,20,0,10"/>
+        <Entry 
+            Text="{Binding GroceryList.Name}" 
+            FontSize="24"
+            Placeholder="List Name" />
 
+        <HorizontalStackLayout Spacing="10">
+            <Entry 
+                Placeholder="Add item..."
+                Text="{Binding NewItemText}"
+                HorizontalOptions="FillAndExpand" />
+
+            <Button 
+                Text="Add"
+                Command="{Binding AddItemCommand}" />
+        </HorizontalStackLayout>
+
+        <CollectionView ItemsSource="{Binding GroceryList.Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="•" FontSize="20" />
+                        <Label Text="{Binding Text}" FontSize="18" VerticalOptions="Center" />
+                        <Button 
+                            Text="Delete"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:GroceryListViewModel}}, Path=DeleteItemCommand}"
+                            CommandParameter="{Binding}" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button 
+            Text="Share List"
+            Command="{Binding ShareListCommand}"
+            BackgroundColor="#4CAF50"
+            TextColor="White" />
+
+        <Button 
+            Text="Save List"
+            Command="{Binding SaveListCommand}"
+            BackgroundColor="#2196F3"
+            TextColor="White" />
+        
+        <Button 
+            Text="View Saved Lists"
+            Command="{Binding ViewSavedListsCommand}"
+            BackgroundColor="#9C27B0"
+            TextColor="White" />
 
     </VerticalStackLayout>
 </ContentPage>
