@@ -21,6 +21,12 @@ namespace IT3048_MAIU_Grocery_List.Services
             _db.CreateTableAsync<Models.User>().Wait();
 
             Users = new UserRepository(_db);
+
+
+            // Un-comment this if you are using the SQLite/SQL Server Compact Toolbox extension and need the db file to view the table contents.
+            //Path only works for windows, android path is stored in its private sandbox.
+            //System.Diagnostics.Debug.WriteLine($"DB PATH: {dbPath}");
         }
+
     }
 }

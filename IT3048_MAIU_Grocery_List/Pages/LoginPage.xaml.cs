@@ -31,16 +31,18 @@ public partial class LoginPage : ContentPage
 		else
 		{
 			ErrorLabel.Text = "";
-            await Shell.Current.GoToAsync("//GroceryListPage");
+            // await Shell.Current.GoToAsync($"GroceryListPage?username={username}");
+
+			//Current logic to display username when logged in
+            await Navigation.PushAsync(new GroceryListPage(username));
         }
 	}
 	private async void OnSignupTapped(object sender, TappedEventArgs e)
 	{
-		await Shell.Current.GoToAsync("//SignUpPage");
+		await Shell.Current.GoToAsync("SignUpPage");
 	}
 
-
-	//This is the temporary logic to make sure the loginpage looks alright and functions. Replace with SQLite database logic.
+	//Database logic, checks the database for the entered username and password
 	private async Task<bool> ValidateCredentialsAsync(string username, string password)
 	{
 		var user = await _database.Users.GetByUsernameAsync(username);

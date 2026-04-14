@@ -99,7 +99,7 @@ public class SignUpViewModel : INotifyPropertyChanged
 
         await _database.Users.CreateUserAsync(newUser);
 
-        await Shell.Current.GoToAsync("//LoginPage");
+        await Shell.Current.GoToAsync("//Login");
     }
 
     private void ShowError(string message)

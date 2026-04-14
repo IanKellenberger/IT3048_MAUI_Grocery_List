@@ -24,17 +24,17 @@
                    IsPassword="True"
                    Text="{Binding ConfirmPassword}"/>
 
-            <Label Text="{Binding ErrorMesage}"
+            <Label Text="{Binding ErrorMessage}"
                    TextColor="Red"
                    IsVisible="{Binding HasError}"/>
 
             <Button Text="Sign Up"
-                    Command="{Binding SignUpcommand}"/>
+                    Command="{Binding SignUpCommand}"/>
 
             <Button Text="Back To Login"
                     Command="{Binding NavigateToLoginCommand}"
-                    BackgroundColor="Transparent"
-                    TextColor="Blue"/>
+                    BackgroundColor="LightGrey"
+                    TextColor="Black"/>
 
         </VerticalStackLayout>
         

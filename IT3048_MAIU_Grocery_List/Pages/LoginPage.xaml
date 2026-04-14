@@ -34,7 +34,7 @@
 
         <HorizontalStackLayout HorizontalOptions="Center">
             <Label Text="Don't have an account?"/>
-            <Label Text=" Sign Up" TextColor="Blue" FontAttributes="Bold">
+            <Label Text=" Sign Up" TextColor="LightBlue" FontAttributes="Bold,Italic">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnSignupTapped"/>
                 </Label.GestureRecognizers>
