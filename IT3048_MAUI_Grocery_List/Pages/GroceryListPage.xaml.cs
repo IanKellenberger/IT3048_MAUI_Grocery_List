@@ -1,3 +1,4 @@
+
 using IT3048_MAUI_Grocery_List.ViewModels;
 using IT3048_MAUI_Grocery_List.Pages;
 
@@ -12,4 +13,5 @@ public partial class GroceryListPage : ContentPage
         //Current logic to display username when logged itn
         UsernameLabel.Text = $"Logged in as {username}";
     }
+
 }

@@ -1,3 +1,4 @@
+
 ﻿using IT3048_MAUI_Grocery_List.Pages;
 namespace IT3048_MAUI_Grocery_List
 {
@@ -6,6 +7,7 @@ namespace IT3048_MAUI_Grocery_List
         public AppShell()
         {
             InitializeComponent();
+
 
             Routing.RegisterRoute("Login", typeof(LoginPage));
             Routing.RegisterRoute("SignUpPage", typeof(SignUpPage));
