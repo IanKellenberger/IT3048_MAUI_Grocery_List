@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
-using IT3048_MAUI_Grocery_List;
+﻿using SQLite;
+using IT3048_MAUI_Grocery_List.Models;
 
 namespace IT3048_MAUI_Grocery_List.Services
 {
@@ -13,20 +8,19 @@ namespace IT3048_MAUI_Grocery_List.Services
         private readonly SQLiteAsyncConnection _db;
 
         public UserRepository Users { get; }
+        public GroceryRepository Groceries { get; }
 
         public AppDatabaseService(string dbPath)
         {
             _db = new SQLiteAsyncConnection(dbPath);
 
-            _db.CreateTableAsync<Models.User>().Wait();
+            _db.CreateTableAsync<User>().Wait();
+            _db.CreateTableAsync<GroceryItem>().Wait();
 
             Users = new UserRepository(_db);
+            Groceries = new GroceryRepository(_db);
 
-
-            // Un-comment this if you are using the SQLite/SQL Server Compact Toolbox extension and need the db file to view the table contents.
-            //Path only works for windows, android path is stored in its private sandbox.
-            //System.Diagnostics.Debug.WriteLine($"DB PATH: {dbPath}");
+            // System.Diagnostics.Debug.WriteLine($"DB PATH: {dbPath}");
         }
-
     }
 }

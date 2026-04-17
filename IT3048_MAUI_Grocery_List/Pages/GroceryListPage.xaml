@@ -2,19 +2,57 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT3048_MAUI_Grocery_List.Pages.GroceryListPage"
+             Title="Grocery List">
 
-             Title="GroceryListPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
 
-        <Label x:Name="UsernameLabel"
-               FontSize="20"
-               HorizontalOptions="Center"
-               Margin="0,20,0,10"/>
+            <Label Text="Grocery List"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
 
+            <Entry x:Name="NameEntry"
+                   Placeholder="Item name" />
 
-    </VerticalStackLayout>
+            <Entry x:Name="QuantityEntry"
+                   Placeholder="Quantity"
+                   Keyboard="Numeric" />
+
+            <Entry x:Name="CategoryEntry"
+                   Placeholder="Category" />
+
+            <Button Text="Add Item"
+                    Clicked="OnAddItemClicked" />
+
+            <CollectionView x:Name="GroceryCollectionView"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="0,5" BorderColor="LightGray">
+                            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+
+                                <CheckBox IsChecked="{Binding IsChecked}"
+                                          CheckedChanged="OnItemCheckedChanged" />
+
+                                <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="18"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding Category}" FontSize="14" />
+                                    <Label Text="{Binding Quantity, StringFormat='Quantity: {0}'}"
+                                           FontSize="14" />
+                                </VerticalStackLayout>
+
+                                <Button Text="Delete"
+                                        Clicked="OnDeleteItemClicked"
+                                        CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
