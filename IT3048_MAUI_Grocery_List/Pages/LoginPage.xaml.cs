@@ -33,8 +33,8 @@ public partial class LoginPage : ContentPage
 			ErrorLabel.Text = "";
             // await Shell.Current.GoToAsync($"GroceryListPage?username={username}");
 
-			//Current logic to display username when logged in
-            await Navigation.PushAsync(new GroceryListPage(username));
+            //Current logic to display username when logged in
+            await Navigation.PushAsync(new GroceryListPage(username, _database));
         }
 	}
 	private async void OnSignupTapped(object sender, TappedEventArgs e)
