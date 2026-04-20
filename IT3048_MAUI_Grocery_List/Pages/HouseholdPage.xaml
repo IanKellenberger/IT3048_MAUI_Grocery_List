@@ -2,11 +2,62 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IT3048_MAUI_Grocery_List.Pages.HouseholdPage"
-             Title="HouseholdPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Households">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <Label x:Name="CurrentUserLabel"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+            <Entry x:Name="HouseholdNameEntry"
+                   Placeholder="Enter household name" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Create Household"
+                        Clicked="OnCreateHouseholdClicked"
+                        HorizontalOptions="FillAndExpand" />
+                <Button Text="Join Household"
+                        Clicked="OnJoinHouseholdClicked"
+                        HorizontalOptions="FillAndExpand" />
+            </HorizontalStackLayout>
+
+            <Label Text="Your Households"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+            <CollectionView x:Name="HouseholdCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="OnHouseholdSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="0,5">
+                            <Label Text="{Binding Name}" FontSize="16" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="Members"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+            <CollectionView x:Name="MembersCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Username}" Padding="6" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Back to Grocery List"
+                    Clicked="OnBackClicked" />
+
+            <Label x:Name="MessageLabel"
+                   TextColor="Red"
+                   FontSize="14" />
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
