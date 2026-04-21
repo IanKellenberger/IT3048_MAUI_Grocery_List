@@ -1,70 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewmodels="clr-namespace:IT3048_MAUI_Grocery_List.ViewModels"
-    x:Class="IT3048_MAUI_Grocery_List.Pages.GroceryListPage">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IT3048_MAUI_Grocery_List.Pages.GroceryListPage"
+             Title="Grocery List">
 
-    <ContentPage.BindingContext>
-        <viewmodels:GroceryListViewModel />
-    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
 
-    <VerticalStackLayout Padding="20" Spacing="15">
+            <Label x:Name="UsernameLabel"
+                   FontSize="18"
+                   FontAttributes="Bold" />
 
-        <Label 
-            x:Name="UsernameLabel"
-            FontSize="18"
-            TextColor="Gray"
-            HorizontalOptions="Start" />
+            <Entry x:Name="ListNameEntry"
+                   Placeholder="Enter list name" />
 
-        <Entry 
-            Text="{Binding GroceryList.Name}" 
-            FontSize="24"
-            Placeholder="List Name" />
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Add Item"
+                        Clicked="OnAddItemClicked"
+                        HorizontalOptions="FillAndExpand" />
+                <Button Text="New List"
+                        Clicked="OnNewListClicked"
+                        HorizontalOptions="FillAndExpand" />
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout Spacing="10">
-            <Entry 
-                Placeholder="Add item..."
-                Text="{Binding NewItemText}"
-                HorizontalOptions="FillAndExpand" />
+            <CollectionView x:Name="ItemsCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="Auto,*,110,Auto"
+                              Padding="0,6">
+                            <CheckBox Grid.Column="0"
+                                      IsChecked="{Binding IsChecked}" />
 
-            <Button 
-                Text="Add"
-                Command="{Binding AddItemCommand}" />
-        </HorizontalStackLayout>
+                            <Entry Grid.Column="1"
+                                   Text="{Binding Name}"
+                                   Placeholder="Item name" />
 
-        <CollectionView ItemsSource="{Binding GroceryList.Items}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="•" FontSize="20" />
-                        <Label Text="{Binding Text}" FontSize="18" VerticalOptions="Center" />
-                        <Button 
-                            Text="Delete"
-                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:GroceryListViewModel}}, Path=DeleteItemCommand}"
-                            CommandParameter="{Binding}" />
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            <Entry Grid.Column="2"
+                                   Text="{Binding PriceText}"
+                                   Placeholder="0.00"
+                                   Keyboard="Numeric" />
 
-        <Button 
-            Text="Share List"
-            Command="{Binding ShareListCommand}"
-            BackgroundColor="#4CAF50"
-            TextColor="White" />
+                            <Button Grid.Column="3"
+                                    Text="X"
+                                    Clicked="OnDeleteItemClicked" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-        <Button 
-            Text="Save List"
-            Command="{Binding SaveListCommand}"
-            BackgroundColor="#2196F3"
-            TextColor="White" />
-        
-        <Button 
-            Text="View Saved Lists"
-            Command="{Binding ViewSavedListsCommand}"
-            BackgroundColor="#9C27B0"
-            TextColor="White" />
+            <Label x:Name="TotalLabel"
+                   Text="Total: $0.00"
+                   FontSize="18"
+                   FontAttributes="Bold" />
 
-    </VerticalStackLayout>
+            <Button Text="Save List"
+                    Clicked="OnSaveListClicked" />
+
+            <Button Text="Households"
+                    Clicked="OnHouseholdsClicked" />
+
+            <Button Text="Profile"
+                    Clicked="OnProfileClicked" />
+
+            <Label x:Name="MessageLabel"
+                   TextColor="Red"
+                   FontSize="14" />
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

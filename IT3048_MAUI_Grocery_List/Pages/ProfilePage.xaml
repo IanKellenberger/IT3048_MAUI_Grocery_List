@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IT3048_MAUI_Grocery_List.Pages.ProfilePage"
+             Title="Profile">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="14">
+
+            <Label Text="Profile"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Frame Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Username"
+                           FontAttributes="Bold" />
+                    <Label x:Name="UsernameLabel"
+                           FontSize="18" />
+
+                    <Label Text="Email"
+                           FontAttributes="Bold" />
+                    <Label x:Name="EmailLabel"
+                           FontSize="18" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Go to Grocery List"
+                    Clicked="OnGroceryListClicked" />
+
+            <Button Text="Go to Households"
+                    Clicked="OnHouseholdsClicked" />
+
+            <Button Text="Log Out"
+                    Clicked="OnLogoutClicked" />
+
+            <Button Text="Delete Account"
+                    Clicked="OnDeleteAccountClicked"
+                    BackgroundColor="IndianRed"
+                    TextColor="White" />
+
+            <Label x:Name="MessageLabel"
+                   TextColor="Red"
+                   FontSize="14" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
