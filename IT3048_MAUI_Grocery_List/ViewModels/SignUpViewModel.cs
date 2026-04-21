@@ -67,7 +67,7 @@ public class SignUpViewModel : INotifyPropertyChanged
         SignUpCommand = new Command(OnSignUp);
         NavigateToLoginCommand = new Command(async () =>
         {
-            await Shell.Current.GoToAsync("//Login");
+            await Shell.Current.GoToAsync("Login");
         });
     }
 

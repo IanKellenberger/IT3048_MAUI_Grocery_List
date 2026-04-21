@@ -1,4 +1,4 @@
-using Microsoft.Maui.Controls;
+using IT3048_MAUI_Grocery_List.ViewModels;
 
 namespace IT3048_MAUI_Grocery_List.Pages;
 
@@ -7,11 +7,9 @@ public partial class SavedListsPage : ContentPage
     public SavedListsPage()
     {
         InitializeComponent();
-    }
 
-    private async void OnBackClicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("..");
+        BindingContext = new SavedListsViewModel(
+            App.DatabaseService.GroceryLists
+        );
     }
-
 }

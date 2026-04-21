@@ -17,7 +17,7 @@ public partial class GroceryListPage : ContentPage
         _username = username;
         _database = database;
 
-        UsernameLabel.Text = $"Logged in as {_username}";
+        UsernameLabel.Text = "Logged in as " + _username;
         ItemsCollectionView.ItemsSource = _items;
 
         AddBlankItem();
@@ -31,7 +31,7 @@ public partial class GroceryListPage : ContentPage
         RecalculateTotal();
     }
 
-    private void GroceryItem_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+    private void GroceryItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
         RecalculateTotal();
     }
@@ -48,7 +48,7 @@ public partial class GroceryListPage : ContentPage
             }
         }
 
-        TotalLabel.Text = $"Total: ${total:F2}";
+        TotalLabel.Text = "Total: $" + total.ToString("F2");
     }
 
     private void OnAddItemClicked(object sender, EventArgs e)
@@ -117,7 +117,7 @@ public partial class GroceryListPage : ContentPage
             CreatedAt = DateTime.Now
         };
 
-        await _database.GroceryLists.CreateListAsync(savedList);
+        int listId = await _database.GroceryLists.CreateListAsync(savedList);
 
         var dbItems = new List<SavedGroceryItem>();
 
@@ -127,7 +127,7 @@ public partial class GroceryListPage : ContentPage
 
             dbItems.Add(new SavedGroceryItem
             {
-                GroceryListId = savedList.Id,
+                GroceryListId = listId,
                 ItemName = item.Name.Trim(),
                 Price = parsedPrice,
                 IsChecked = item.IsChecked
@@ -148,6 +148,11 @@ public partial class GroceryListPage : ContentPage
     private async void OnProfileClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new ProfilePage(_username, _database));
+    }
+
+    private async void OnViewSavedListsClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new SavedListsPage());
     }
 
     public class GroceryItemRow : INotifyPropertyChanged
@@ -195,7 +200,7 @@ public partial class GroceryListPage : ContentPage
             }
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
         {
