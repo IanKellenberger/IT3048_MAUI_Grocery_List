@@ -31,6 +31,13 @@ namespace IT3048_MAUI_Grocery_List.Services
                 .ToListAsync();
         }
 
+        public Task<List<SavedGroceryList>> GetAllListsAsync()
+        {
+            return _db.Table<SavedGroceryList>()
+                .OrderByDescending(x => x.CreatedAt)
+                .ToListAsync();
+        }
+
         public Task<List<SavedGroceryItem>> GetItemsForListAsync(int listId)
         {
             return _db.Table<SavedGroceryItem>()

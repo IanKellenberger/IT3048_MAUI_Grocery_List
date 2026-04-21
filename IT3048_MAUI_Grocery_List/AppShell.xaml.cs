@@ -1,5 +1,5 @@
+using IT3048_MAUI_Grocery_List.Pages;
 
-﻿using IT3048_MAUI_Grocery_List.Pages;
 namespace IT3048_MAUI_Grocery_List
 {
     public partial class AppShell : Shell

@@ -67,7 +67,7 @@ public class SignUpViewModel : INotifyPropertyChanged
         SignUpCommand = new Command(OnSignUp);
         NavigateToLoginCommand = new Command(async () =>
         {
-            await Shell.Current.GoToAsync("//Login");
+            await Shell.Current.GoToAsync("Login");
         });
     }
 
@@ -89,6 +89,20 @@ public class SignUpViewModel : INotifyPropertyChanged
             ShowError("Passwords do not match.");
             return;
         }
+        // Added parameters to check if email and username already exist
+        var existingEmailUser = await _database.Users.GetByEmailAsync(Email);
+        if (existingEmailUser != null)
+        {
+            ShowError("An account with this email already exists.");
+            return;
+        }
+
+        var existingUsernameUser = await _database.Users.GetByUsernameAsync(Username);
+        if (existingUsernameUser != null)
+        {
+            ShowError("That username is already taken.");
+            return;
+        }
 
         var newUser = new User
         {
@@ -101,6 +115,8 @@ public class SignUpViewModel : INotifyPropertyChanged
 
         await Shell.Current.GoToAsync("Login");
     }
+
+
 
     private void ShowError(string message)
     {

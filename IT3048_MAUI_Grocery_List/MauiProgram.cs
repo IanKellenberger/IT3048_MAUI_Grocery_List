@@ -19,8 +19,9 @@ namespace IT3048_MAUI_Grocery_List
                 });
 
 
-            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "app.db3");
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "grocery.db3");
             builder.Services.AddSingleton<AppDatabaseService>(s => new AppDatabaseService(dbPath));
+            builder.Services.AddSingleton<App>();
 
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddTransient<SignUpPage>();
