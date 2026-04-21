@@ -46,7 +46,7 @@ public partial class ProfilePage : ContentPage
 
     private async void OnLogoutClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//Login");
+        await Shell.Current.GoToAsync("Login");
     }
 
     private async void OnDeleteAccountClicked(object sender, EventArgs e)
@@ -69,6 +69,6 @@ public partial class ProfilePage : ContentPage
         await _database.Users.DeleteUserAsync(_currentUser.Id);
 
         await DisplayAlert("Deleted", "Your account has been deleted.", "OK");
-        await Shell.Current.GoToAsync("//Login");
+        await Shell.Current.GoToAsync("Login");
     }
 }
