@@ -3,6 +3,7 @@ using IT3048_MAUI_Grocery_List.Pages;
 using Microsoft.Extensions.Logging;
 
 namespace IT3048_MAUI_Grocery_List
+
 {
     public static class MauiProgram
     {
@@ -17,6 +18,7 @@ namespace IT3048_MAUI_Grocery_List
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+
             string dbPath = Path.Combine(FileSystem.AppDataDirectory, "grocery.db3");
             builder.Services.AddSingleton<AppDatabaseService>(s => new AppDatabaseService(dbPath));
             builder.Services.AddSingleton<App>();
@@ -27,6 +29,7 @@ namespace IT3048_MAUI_Grocery_List
 
 #if DEBUG
             builder.Logging.AddDebug();
+
 #endif
 
             return builder.Build();

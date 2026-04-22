@@ -8,10 +8,6 @@ namespace IT3048_MAUI_Grocery_List
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-            Routing.RegisterRoute(nameof(SignUpPage), typeof(SignUpPage));
-            Routing.RegisterRoute(nameof(GroceryListPage), typeof(GroceryListPage));
-            Routing.RegisterRoute(nameof(SavedListsPage), typeof(SavedListsPage));
 
             Routing.RegisterRoute("Login", typeof(LoginPage));
             Routing.RegisterRoute("SignUpPage", typeof(SignUpPage));
