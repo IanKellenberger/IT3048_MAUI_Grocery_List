@@ -36,14 +36,25 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame BorderColor="LightGray" Padding="8" Margin="3">
-                        <HorizontalStackLayout>
-                            <Label Text="-" FontSize="18" />
-                            <Label Text="{Binding ItemName}" FontSize="18" />
+                        <HorizontalStackLayout Spacing="15">
+
+                            <CheckBox IsChecked="{Binding IsChecked}" />
+
+                            <Label Text="{Binding ItemName}"
+                           FontSize="18"
+                           VerticalOptions="Center" />
+
+                            <Label Text="{Binding Price, StringFormat='${0:F2}'}"
+                           FontSize="18"
+                           TextColor="Gray"
+                           VerticalOptions="Center" />
+
                         </HorizontalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
 
     </VerticalStackLayout>
 </ContentPage>
