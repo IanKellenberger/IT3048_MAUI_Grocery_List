@@ -49,10 +49,14 @@ namespace IT3048_MAUI_Grocery_List.Services
             _db = new SQLiteAsyncConnection(dbPath);
 
             _db.CreateTableAsync<User>().Wait();
-            _db.CreateTableAsync<SavedGroceryList>().Wait();
-            _db.CreateTableAsync<SavedGroceryItem>().Wait();
             _db.CreateTableAsync<Household>().Wait();
             _db.CreateTableAsync<HouseholdMember>().Wait();
+
+            _db.DropTableAsync<SavedGroceryList>().Wait();
+            _db.CreateTableAsync<SavedGroceryList>().Wait();
+
+            _db.DropTableAsync<SavedGroceryItem>().Wait();
+            _db.CreateTableAsync<SavedGroceryItem>().Wait();
 
             Users = new UserRepository(_db);
             GroceryLists = new GroceryListRepository(_db);
@@ -60,3 +64,4 @@ namespace IT3048_MAUI_Grocery_List.Services
         }
     }
 }
+

@@ -23,10 +23,9 @@ namespace IT3048_MAUI_Grocery_List.Services
             return _db.InsertAllAsync(items);
         }
 
-        public Task<List<SavedGroceryList>> GetListsByUserAsync(int userId)
+        public Task<List<SavedGroceryList>> GetAllListsAsync()
         {
             return _db.Table<SavedGroceryList>()
-                .Where(x => x.UserId == userId)
                 .OrderByDescending(x => x.CreatedAt)
                 .ToListAsync();
         }
@@ -42,6 +41,14 @@ namespace IT3048_MAUI_Grocery_List.Services
         {
             return _db.Table<SavedGroceryItem>()
                 .Where(x => x.GroceryListId == listId)
+                .ToListAsync();
+        }
+
+        public Task<List<SavedGroceryList>> GetListsByUserAsync(int userId)
+        {
+            return _db.Table<SavedGroceryList>()
+                .Where(x => x.UserId == userId)
+                .OrderByDescending(x => x.CreatedAt)
                 .ToListAsync();
         }
 

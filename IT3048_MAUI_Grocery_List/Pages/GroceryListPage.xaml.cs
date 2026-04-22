@@ -152,7 +152,7 @@ public partial class GroceryListPage : ContentPage
 
     private async void OnViewSavedListsClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new SavedListsPage());
+        await Navigation.PushAsync(new SavedListsPage(_database.GroceryLists));
     }
 
     public class GroceryItemRow : INotifyPropertyChanged
