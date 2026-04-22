@@ -1,0 +1,33 @@
+[33m23a7e2d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mTesting[m[33m)[m Merge pull request #7 from IanKellenberger/revert-6-Testing
+[33md67046c[m Revert "Testing"
+[33m633c048[m Merge pull request #6 from IanKellenberger/Testing
+[33ma956b2a[m[33m ([m[1;31morigin/Testing[m[33m)[m Merge branch 'master' into Testing
+[33me1a33d1[m fixed saved list item display
+[33mc48b541[m Re-added view saved lists button
+[33m2f82153[m merge editor fix
+[33mce6a8f9[m Merge https://github.com/IanKellenberger/IT3048_MAUI_Grocery_List into Testing
+[33m9c3ee64[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m view saved lists page and database aligned
+[33mf9d72a1[m Fixed Bugs and Routing
+[33m5e79dcd[m Merge pull request #4 from IanKellenberger/alexbranch
+[33me0df395[m[33m ([m[1;31morigin/alexbranch[m[33m)[m Implemented grocery list, household, and profile features with new SQLite models, repositories, navigation, item saving, totals, and account management
+[33madea470[m updated list page with items and saved lists features
+[33m22d3f09[m Fixed what I broke in Readme
+[33m95949fa[m Merge pull request #3 from IanKellenberger/LoginPage
+[33md7faca1[m[33m ([m[1;31morigin/LoginPage[m[33m)[m deleted bot.png and updated image names
+[33me031cef[m Merge branch 'master' into LoginPage
+[33m48906b2[m Fixed Names
+[33mbe30d38[m Finished SignUp and database
+[33m109c392[m Database
+[33me784612[m GroceryList, Household pages, Packages
+[33mc47b667[m SignUpPage and SQLite packages
+[33m98eee3a[m Login Page
+[33mbd15b0d[m Merge pull request #1 from IanKellenberger/Testing
+[33mdc1dc03[m Added folder structure for pages and models
+[33m4fd8ad4[m rename
+[33m6bfc86a[m naming conventions
+[33m57b246f[m Readme Image folder assignments 2
+[33m762324d[m Readme Image folder assignments
+[33me234156[m Update images in README to fit better
+[33m0dd6839[m updated readme with wireframes, milestones, and problem statement
+[33m407b495[m Add project files.
+[33mee90bdc[m Add .gitattributes, .gitignore, and README.md.

@@ -90,6 +90,20 @@ public class SignUpViewModel : INotifyPropertyChanged
             return;
         }
 
+        var existingEmailUser = await _database.Users.GetByEmailAsync(Email);
+        if (existingEmailUser != null)
+        {
+            ShowError("An account with this email already exists.");
+            return;
+        }
+
+        var existingUsernameUser = await _database.Users.GetByUsernameAsync(Username);
+        if (existingUsernameUser != null)
+        {
+            ShowError("That username is already taken.");
+            return;
+        }
+
         var newUser = new User
         {
             Username = Username,
@@ -101,6 +115,7 @@ public class SignUpViewModel : INotifyPropertyChanged
 
         await Shell.Current.GoToAsync("Login");
     }
+
 
     private void ShowError(string message)
     {
