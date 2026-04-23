@@ -99,6 +99,7 @@ public partial class HouseholdSharedListsPage : ContentPage, IQueryAttributable
             {
                 SharedListId = sharedList.Id,
                 ItemName = item.ItemName,
+                Price = item.Price,
                 IsChecked = false
             });
         }

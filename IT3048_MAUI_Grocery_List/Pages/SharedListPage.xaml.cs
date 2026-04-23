@@ -29,10 +29,18 @@ public partial class SharedListPage : ContentPage, IQueryAttributable
         string name = await DisplayPromptAsync("Add Item", "Item name:");
         if (string.IsNullOrWhiteSpace(name)) return;
 
+        string priceInput = await DisplayPromptAsync("Add Item", "Enter price:");
+        if (!decimal.TryParse(priceInput, out decimal price))
+        {
+            await DisplayAlert("Invalid Price", "Please enter a valid number.", "OK");
+            return;
+        }
+
         await _database.SharedLists.AddItemAsync(new SharedHouseholdListItem
         {
             SharedListId = _listId,
             ItemName = name,
+            Price = price,
             IsChecked = false
         });
 

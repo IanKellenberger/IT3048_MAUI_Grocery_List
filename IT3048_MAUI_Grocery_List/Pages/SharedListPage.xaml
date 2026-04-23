@@ -13,6 +13,7 @@
                     <HorizontalStackLayout Spacing="10">
                         <CheckBox IsChecked="{Binding IsChecked}" CheckedChanged="OnCheckedChanged" />
                         <Label Text="{Binding ItemName}" />
+                        <Label Text="{Binding Price, StringFormat='${0:F2}'}" TextColor="Gray"/>
                     </HorizontalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

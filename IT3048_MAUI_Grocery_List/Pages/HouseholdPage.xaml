@@ -50,14 +50,13 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        
-        <VerticalStackLayout Grid.Row="2" Padding="20" Spacing="10">
-
-            <Label Text="Members"
-                   FontSize="18"
-                   FontAttributes="Bold" />
+        <Grid Grid.Row="2"
+              RowDefinitions="*,Auto"
+              Padding="20"
+              RowSpacing="10">
 
             <CollectionView x:Name="MembersCollectionView"
+                            Grid.Row="0"
                             HeightRequest="250">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -71,16 +70,19 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            
-            <Button Text="View Shared Lists"
-                    x:Name="ViewSharedListsButton"
-                    Clicked="OnViewSharedListsClicked"
-                    Margin="0,10,0,0" />
+            <VerticalStackLayout Grid.Row="1" Spacing="10">
 
-            <Button Text="Back to Grocery List"
-                    Clicked="OnBackClicked" />
+                <Button Text="View Shared Lists"
+                        x:Name="ViewSharedListsButton"
+                        Clicked="OnViewSharedListsClicked"
+                        Margin="0,10,0,0" />
 
-        </VerticalStackLayout>
+                <Button Text="Back to Grocery List"
+                        Clicked="OnBackClicked" />
+
+            </VerticalStackLayout>
+
+        </Grid>
 
     </Grid>
 </ContentPage>
