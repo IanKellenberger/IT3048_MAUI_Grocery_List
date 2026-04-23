@@ -18,6 +18,8 @@ namespace IT3048_MAUI_Grocery_List
             Routing.RegisterRoute("GroceryListPage", typeof(GroceryListPage));
             Routing.RegisterRoute("HouseholdPage", typeof(HouseholdPage));
             Routing.RegisterRoute("ProfilePage", typeof(ProfilePage));
+            Routing.RegisterRoute("HouseholdSharedListsPage", typeof(HouseholdSharedListsPage));
+            Routing.RegisterRoute("SharedListPage", typeof(SharedListPage));
         }
     }
 }

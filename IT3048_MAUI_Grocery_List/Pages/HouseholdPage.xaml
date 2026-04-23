@@ -4,8 +4,10 @@
              x:Class="IT3048_MAUI_Grocery_List.Pages.HouseholdPage"
              Title="Households">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="12">
+    <Grid RowDefinitions="Auto,*,*">
+
+        
+        <VerticalStackLayout Padding="20" Spacing="12" Grid.Row="0">
 
             <Label x:Name="CurrentUserLabel"
                    FontSize="18"
@@ -16,28 +18,40 @@
 
             <HorizontalStackLayout Spacing="10">
                 <Button Text="Create Household"
-                        Clicked="OnCreateHouseholdClicked"
-                        HorizontalOptions="FillAndExpand" />
+                        Clicked="OnCreateHouseholdClicked" />
                 <Button Text="Join Household"
-                        Clicked="OnJoinHouseholdClicked"
-                        HorizontalOptions="FillAndExpand" />
+                        Clicked="OnJoinHouseholdClicked" />
             </HorizontalStackLayout>
+
+            <Label x:Name="MessageLabel"
+                   TextColor="Red"
+                   FontSize="14"
+                   Margin="0,5,0,0" />
 
             <Label Text="Your Households"
                    FontSize="18"
                    FontAttributes="Bold" />
+        </VerticalStackLayout>
 
-            <CollectionView x:Name="HouseholdCollectionView"
-                            SelectionMode="Single"
-                            SelectionChanged="OnHouseholdSelected">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame Padding="10" Margin="0,5">
-                            <Label Text="{Binding Name}" FontSize="16" />
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+        
+        <CollectionView x:Name="HouseholdCollectionView"
+                        Grid.Row="1"
+                        SelectionMode="Single"
+                        SelectionChanged="OnHouseholdSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="LightGray"
+                            StrokeThickness="1"
+                            Padding="10"
+                            Margin="0,5">
+                        <Label Text="{Binding Name}" FontSize="16" />
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        
+        <VerticalStackLayout Grid.Row="2" Padding="20" Spacing="10">
 
             <Label Text="Members"
                    FontSize="18"
@@ -46,18 +60,26 @@
             <CollectionView x:Name="MembersCollectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Label Text="{Binding Username}" Padding="6" />
+                        <Border Stroke="LightGray"
+                                StrokeThickness="1"
+                                Padding="10"
+                                Margin="0,5">
+                            <Label Text="{Binding Username}" FontSize="16" />
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
+            
+            <Button Text="View Shared Lists"
+                    x:Name="ViewSharedListsButton"
+                    Clicked="OnViewSharedListsClicked"
+                    Margin="0,10,0,0" />
+
             <Button Text="Back to Grocery List"
                     Clicked="OnBackClicked" />
 
-            <Label x:Name="MessageLabel"
-                   TextColor="Red"
-                   FontSize="14" />
-
         </VerticalStackLayout>
-    </ScrollView>
+
+    </Grid>
 </ContentPage>

@@ -43,6 +43,7 @@ namespace IT3048_MAUI_Grocery_List.Services
         public UserRepository Users { get; }
         public GroceryListRepository GroceryLists { get; }
         public HouseholdRepository Households { get; }
+        public SharedHouseholdListRepository SharedLists { get; }
 
         public AppDatabaseService(string dbPath)
         {
@@ -58,9 +59,13 @@ namespace IT3048_MAUI_Grocery_List.Services
             _db.DropTableAsync<SavedGroceryItem>().Wait();
             _db.CreateTableAsync<SavedGroceryItem>().Wait();
 
+            _db.CreateTableAsync<SharedHouseholdList>().Wait();
+            _db.CreateTableAsync<SharedHouseholdListItem>().Wait();
+
             Users = new UserRepository(_db);
             GroceryLists = new GroceryListRepository(_db);
-            Households = new HouseholdRepository(_db);
+            Households = new HouseholdRepository(_db); 
+            SharedLists = new SharedHouseholdListRepository(_db);
         }
     }
 }
