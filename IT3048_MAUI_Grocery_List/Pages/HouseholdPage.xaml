@@ -57,7 +57,8 @@
                    FontSize="18"
                    FontAttributes="Bold" />
 
-            <CollectionView x:Name="MembersCollectionView">
+            <CollectionView x:Name="MembersCollectionView"
+                            HeightRequest="250">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border Stroke="LightGray"

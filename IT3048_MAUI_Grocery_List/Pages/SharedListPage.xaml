@@ -6,7 +6,8 @@
 
     <VerticalStackLayout Padding="20">
 
-        <CollectionView x:Name="ItemsView">
+        <CollectionView x:Name="ItemsView"
+                        HeightRequest="500">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <HorizontalStackLayout Spacing="10">
