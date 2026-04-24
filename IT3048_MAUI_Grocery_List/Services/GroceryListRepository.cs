@@ -45,6 +45,21 @@ namespace IT3048_MAUI_Grocery_List.Services
                 .ToListAsync();
         }
 
+        public Task<List<SavedGroceryList>> GetSavedListsForUserAsync(int userId)
+        {
+            return _db.Table<SavedGroceryList>()
+                .Where(x => x.UserId == userId)
+                .OrderByDescending(x => x.CreatedAt)
+                .ToListAsync();
+        }
+
+        public Task<SavedGroceryList> GetSavedListByIdAsync(int id)
+        {
+            return _db.Table<SavedGroceryList>()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<int> DeleteListAsync(int listId)
         {
             var items = await GetItemsForListAsync(listId);

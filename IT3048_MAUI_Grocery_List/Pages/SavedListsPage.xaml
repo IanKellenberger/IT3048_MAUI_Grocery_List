@@ -5,56 +5,63 @@
     xmlns:viewmodels="clr-namespace:IT3048_MAUI_Grocery_List.ViewModels"
     x:Class="IT3048_MAUI_Grocery_List.Pages.SavedListsPage">
 
-    <VerticalStackLayout Padding="20">
+    <Grid RowDefinitions="Auto,*,*" Padding="20">
 
         <Label Text="Saved Grocery Lists"
                FontSize="26"
                HorizontalOptions="Center"
-               Margin="0,0,0,20" />
+               Margin="0,0,0,20"
+               Grid.Row="0" />
 
-        <CollectionView ItemsSource="{Binding SavedLists}"
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding SavedLists}"
                         SelectionMode="Single"
                         SelectedItem="{Binding SelectedList}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BorderColor="Gray" Padding="10" Margin="5">
+                    <Border Stroke="Gray" StrokeThickness="1" Padding="10" Margin="5">
                         <VerticalStackLayout>
                             <Label Text="{Binding ListName}" FontSize="20" />
                             <Label Text="{Binding CreatedAt, StringFormat='Saved on {0:MM/dd/yyyy}'}"
                                    FontSize="14" TextColor="Gray" />
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Label Text="Items in Selected List"
-               FontSize="22"
-               Margin="0,20,0,10" />
+        
+        <VerticalStackLayout Grid.Row="2" Spacing="10">
 
-        <CollectionView ItemsSource="{Binding SelectedListItems}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame BorderColor="LightGray" Padding="8" Margin="3">
-                        <HorizontalStackLayout Spacing="15">
+            <Label Text="Items in Selected List"
+                   FontSize="22"
+                   Margin="0,20,0,10" />
 
-                            <CheckBox IsChecked="{Binding IsChecked}" />
+            <CollectionView ItemsSource="{Binding SelectedListItems}"
+                            HeightRequest="250">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="LightGray" StrokeThickness="1" Padding="8" Margin="3">
+                            <HorizontalStackLayout Spacing="15">
 
-                            <Label Text="{Binding ItemName}"
-                           FontSize="18"
-                           VerticalOptions="Center" />
+                                <CheckBox IsChecked="{Binding IsChecked}" />
 
-                            <Label Text="{Binding Price, StringFormat='${0:F2}'}"
-                           FontSize="18"
-                           TextColor="Gray"
-                           VerticalOptions="Center" />
+                                <Label Text="{Binding ItemName}"
+                                       FontSize="18"
+                                       VerticalOptions="Center" />
 
-                        </HorizontalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                <Label Text="{Binding Price, StringFormat='${0:F2}'}"
+                                       FontSize="18"
+                                       TextColor="Gray"
+                                       VerticalOptions="Center" />
 
+                            </HorizontalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+
+    </Grid>
 </ContentPage>

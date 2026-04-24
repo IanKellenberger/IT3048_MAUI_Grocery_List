@@ -34,6 +34,7 @@ public partial class HouseholdPage : ContentPage
         var households = await _database.Households.GetHouseholdsForUserAsync(_currentUser.Id);
         HouseholdCollectionView.ItemsSource = households;
         MembersCollectionView.ItemsSource = null;
+        MessageLabel.Text = string.Empty;
     }
 
     private async void OnCreateHouseholdClicked(object sender, EventArgs e)
@@ -124,6 +125,18 @@ public partial class HouseholdPage : ContentPage
             var members = await _database.Households.GetMembersAsync(household.Id);
             MembersCollectionView.ItemsSource = members;
         }
+    }
+
+    private async void OnViewSharedListsClicked(object sender, EventArgs e)
+    {
+        if (HouseholdCollectionView.SelectedItem is not Household household)
+        {
+            await DisplayAlert("Select Household", "Please select a household first.", "OK");
+            return;
+        }
+
+        await Shell.Current.GoToAsync(
+            $"HouseholdSharedListsPage?householdId={household.Id}&userId={_currentUser.Id}");
     }
 
     private async void OnBackClicked(object sender, EventArgs e)
